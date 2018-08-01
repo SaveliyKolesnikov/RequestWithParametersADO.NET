@@ -74,8 +74,7 @@ namespace ParametrizedRequest
             }
             finally
             {
-                if (_connection.State == ConnectionState.Open)
-                    _connection.Close();
+                _connection.Close();
             }
         }
     }
