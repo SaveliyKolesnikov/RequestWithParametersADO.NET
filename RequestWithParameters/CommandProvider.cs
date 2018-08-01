@@ -47,7 +47,7 @@ namespace ParametrizedRequest
                         ? "Id\tText\tAuthor\tRecordDate"
                         : $"Records affected: {reader.RecordsAffected.ToString()}");
 
-                    while (reader.Read())
+                    while (await reader.ReadAsync())
                     {
                         var record = new Record
                         {
