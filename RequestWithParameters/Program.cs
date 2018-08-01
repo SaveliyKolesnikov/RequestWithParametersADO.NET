@@ -25,14 +25,15 @@ namespace ParametrizedRequest
 
         private static string CreateConnectionString()
         {
-
+            const string dbName = "RecordsDb.mdf";
             var projectPath = Directory.GetCurrentDirectory();
             var pathToBinary = Regex.Match(projectPath, "bin.*$", RegexOptions.IgnoreCase).Value;
             if (pathToBinary.Length != 0)
                 projectPath = projectPath.Replace(pathToBinary, string.Empty);
-            var appDataPath = Path.Combine(projectPath, "AppData\\RecordsDb.mdf");
+
+            var dbPath = Path.Combine(projectPath, $"AppData/{dbName}");
             var connectionString =
-                $"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"{appDataPath}\";Integrated Security=True;Connect Timeout=30";
+                $"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"{dbPath}\";Integrated Security=True;Connect Timeout=30";
 
             return connectionString;
         }
